@@ -1,0 +1,41 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Cariler
+@{
+    ViewBag.Title = "CariGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Cari Getir</h2>
+
+<br />
+
+@using (Html.BeginForm("CariGüncelle", "Cari", FormMethod.Post))
+{
+<div class="form-group">
+
+    @Html.HiddenFor(x=>x.Cariid)
+    @Html.LabelFor(x => x.CariAd)
+    @Html.TextAreaFor(x => x.CariAd, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.CariSoyad)
+    @Html.TextAreaFor(x => x.CariSoyad, new { @class = "form-control" })
+
+    <br />
+
+    @Html.LabelFor(x => x.CariSehir)
+    @Html.TextAreaFor(x => x.CariSehir, new { @class = "form-control" })
+    <br />
+
+    @Html.LabelFor(x => x.CariMail)
+    @Html.TextAreaFor(x => x.CariMail, new { @class = "form-control" })
+    <br />
+</div>
+    <button class="btn btn-default " style="background-color:yellowgreen">Güncelle</button>
+
+
+
+}
+
+
+
+

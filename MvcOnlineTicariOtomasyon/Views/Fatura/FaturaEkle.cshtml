@@ -1,0 +1,41 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Faturalar
+@{
+    ViewBag.Title = "FaturaEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>FaturaEkle</h2>
+
+<br />
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.FaturaSeriNp)
+    @Html.TextBoxFor(x => x.FaturaSeriNp, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.FaturaSıraNo)
+    @Html.TextBoxFor(x => x.FaturaSıraNo, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Tarih)
+    @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Saat)
+    @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.VergiDairesi)
+    @Html.TextBoxFor(x => x.VergiDairesi, new { @class = "form-control" })
+
+    @Html.LabelFor(x => x.TeslimEden)
+    @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.TeslimAlan)
+    @Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })
+
+    <br />
+    @Html.LabelFor(x => x.Toplam)
+    @Html.TextBoxFor(x => x.Toplam, new { @class = "form-control" })
+
+    <br />
+
+
+    <button class="btn btn-primary">Kaydet</button>
+</form>
+
