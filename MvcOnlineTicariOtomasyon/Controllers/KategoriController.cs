@@ -7,22 +7,23 @@ using PagedList;
 using PagedList.Mvc;
 using MvcOnlineTicariOtomasyon.Models.Siniflar;
 
+
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
     public class KategoriController : Controller
     {
         // GET: Kategori
         Context c = new Context();
-        public ActionResult Index(int sayfa=1)
+        public ActionResult Index(int sayfa = 1)
         {
-            var degerler = c.Kategoris.ToList().ToPagedList(sayfa,4);
+            var degerler = c.Kategoris.ToList().ToPagedList(sayfa, 4);
             return View(degerler);
         }
 
         [HttpGet]
         public ActionResult KategoriEkle()
         {
-          
+
             return View();
         }
 
@@ -47,8 +48,8 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         public ActionResult KategoriGetir(int id)
         {
             var kategori = c.Kategoris.Find(id);
-      
-            return View("KategoriGetir",kategori);
+
+            return View("KategoriGetir", kategori);
         }
 
         public ActionResult KategoriGuncelle(Kategori k)
@@ -57,8 +58,30 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             ktgr.KategoriAd = k.KategoriAd;
             c.SaveChanges();
 
-             return RedirectToAction("Index");
+            return RedirectToAction("Index");
         }
+        public ActionResult Deneme()
+        {
+        Class3 cs = new Class3();
+        cs.Kategoriler =new SelectList(c.Kategoris,"KategorID","KategoriAd");
+        cs.Urunler =new SelectList(c.Uruns,"Urunid","UrunAd");
+        return View(cs);
     }
+        public JsonResult UrunGetir(int p)
+        {
+            var urunlistesi = (from x in c.Uruns
+                               join y in c.Kategoris
+                               on x.Kategori.KategoriID equals y.KategoriID
+                               where x.Kategori.KategoriID == p
+                               select new
+                               {
+                                   Text = x.UrunAd,
+                                   Value = x.Urunid.ToString()
+                               }
+                ).ToList();
+            return Json(urunlistesi, JsonRequestBehavior.AllowGet);
+        }
+
+}
 
 }

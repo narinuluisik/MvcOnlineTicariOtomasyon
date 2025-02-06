@@ -7,8 +7,9 @@ using MvcOnlineTicariOtomasyon.Models.Siniflar;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
+    [Authorize]
     public class DepartmanController : Controller
-    {
+    {      
         // GET: Departman
         Context c = new Context();
         public ActionResult Index()
